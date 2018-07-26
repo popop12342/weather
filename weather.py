@@ -6,6 +6,9 @@ import matplotlib.pyplot as plt
 record = {}
 
 def main():
+	plt.ion()
+	plt.show()
+
 	while True:
 		temperatura_atual()
 		forecast()
@@ -27,8 +30,10 @@ def info_dia():
 	if (0 in horas):
 		horas[horas.index(0)] = 24
 
+	plt.clf()
 	plt.plot(horas, temps)
-	plt.show()
+	plt.draw()
+	plt.pause(0.001)
 
 def forecast():
 	response = requests.get("http://api.openweathermap.org/data/2.5/forecast?id=3448439&APPID=765901de0eabfedfe64d68292d7c4d08")
